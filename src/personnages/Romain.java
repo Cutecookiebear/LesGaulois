@@ -2,7 +2,7 @@ package personnages;
 
 public class Romain {
 	private String nom;
-	private int force;
+	private static int force;
 
 	public Romain(String nom, int force) {
 		this.nom = nom;
@@ -12,20 +12,36 @@ public class Romain {
 	public String getNom() {
 		return nom;
 	}
-
-	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + "»");
+	
+	public int getForce() {
+		return force;
 	}
 
-	private String prendreParole() {
+	
+
+	public static void parler(Romain romain,String texte) {
+		System.out.println(prendreParole(romain.getNom()) + "< " + texte + " >");
+	}
+
+	public static String prendreParole(String nom) {
 		return "Le romain " + nom + " : ";
 	}
 
-	public void recevoirCoup(int forceCoup) {
+	public static void recevoirCoup(Romain romain,int forceCoup) {
 		force -= forceCoup;
 		if (force > 0) {
-			parler("Aïe");
+			parler(romain,"AÃ¯e");
 		} else {
-			parler("J'abandonne...");
+			parler(romain,"J'abandonne...");
 		}
 	}
+	
+	public String toString() {
+		return "Romain [nom=" + nom + ", force=" + force + "]";
+		
+	}
+	
+	public static void main(String[] args) {
+		
+}
+}

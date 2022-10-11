@@ -1,16 +1,18 @@
 package personnages;
 
+import java.util.Random;
+import java.util;
 public class Druide {
 	private String nom;
-	private int effetPotionMin;
-	private int effetPotionMax;
+	private static int effetPotionMin;
+	private static int effetPotionMax;
+	private int forcePotion=1;
 
 public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 this.nom = nom;
 this.effetPotionMin = effetPotionMin;
 this.effetPotionMax = effetPotionMax;
-parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller
-d'une force " + effetPotionMin + " à "
+parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " ï¿½ "
 + effetPotionMax + ".");
 }
 
@@ -18,11 +20,32 @@ d'une force " + effetPotionMin + " à "
 		return nom;
 	}
 
-	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + "»");
+	public static void parler(Druide druide,String texte) {
+		System.out.println(prendreParole(druide.nom) + "ï¿½ " + texte + "ï¿½");
 	}
 
-	private String prendreParole() {
+	private static String prendreParole(String nom) {
 		return "Le druide " + nom + " : ";
 	}
+	
+	public static void preparerPotion(Druide druide) {
+		Random random = new Random();
+		int effet = random.nextInt(druide.effetPotionMin,druide.effetPotionMax);
+		if (effet>7) {
+			parler(druide,"< J'ai prÃ©parÃ© une super potion de force " + effet + " >");
+		}
+		else {
+			parler(druide,"< Je n'ai pas trouvÃ© tous les ingrÃ©dients, ma potion est seulement de force" + effet + " >");
+		}
+		
+	}
+	
+	
+	
+	public static void main() {
+		Druide panoramix = new Druide("Panoramix",5,10);
+		preparerPotion(panoramix);
+	}
+	
+	
 }
