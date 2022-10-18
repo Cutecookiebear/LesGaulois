@@ -2,7 +2,7 @@ package personnages;
 
 public class Gaulois {
 	private String nom;
-	private static int force;
+	private int force;
 	private int effetPotion = 1;
 
 	public Gaulois(String nom, int force) {
@@ -18,7 +18,7 @@ public class Gaulois {
 		return force;
 	}
 
-	public static void parler(Gaulois gaulois,String texte) {
+	public void parler(Gaulois gaulois,String texte) {
 		System.out.println(prendreParole(gaulois.getNom()) + "< " + texte + " >");
 	}
 
@@ -26,7 +26,7 @@ public class Gaulois {
 		return "Le gaulois " + nom + " : ";
 	}
 
-	public static void frapper(Gaulois gaulois,Romain romain) {
+	public void frapper(Gaulois gaulois,Romain romain) {
 		System.out.println(gaulois.getNom() + " envoie un grand coup dans la mâchoire de " + romain.getNom());
 		romain.recevoirCoup(romain,force / 3);
 	}
@@ -36,7 +36,6 @@ public class Gaulois {
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
 	}
 public static void main(String[] args) {
-		
 }
 
 }
